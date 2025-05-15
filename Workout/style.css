@@ -1,0 +1,61 @@
+* {
+  border: 1px solid white; /* 1 */
+  box-sizing: border-box; /* 2 */
+}
+
+button {
+  outline: none;
+  border: 0;
+  cursor: pointer;
+}
+
+ul {
+  padding-left: 0px;
+}
+
+.workout-button {
+  font-size: 22px;
+  margin: 0 2px;
+  background-color: transparent;
+}
+
+.workout-button:hover {
+  opacity: 0.8;
+}
+
+.workout-increase,
+.workout-decrease {
+  color: goldenrod;
+}
+
+.workout-delete {
+  color: darkred;
+}
+
+.navbar {
+  font-size: 32px;
+  padding: 20px;
+}
+.navbar_logo {
+  color: green;
+}
+
+.navbar_count {
+  display: inline-block;
+  background-color: green;
+  width: 35px;
+  height: 35px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 50px;
+  color: white;
+}
+.add_input {
+  font-size: 30px;
+}
+.add_button {
+  background-color: green;
+  color: white;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+}

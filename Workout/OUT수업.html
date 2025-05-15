@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Workout App</title>
+    <script
+      src="https://kit.fontawesome.com/3b3af91d34.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="/Workout/style.css" />
+  </head>
+  <body>
+    <div class="navbar">
+      <i class="navbar_logo fas fa-leaf"></i>
+      <span>Workout Tracker</span>
+      <span class="navbar_count">0</span>
+    </div>
+    <!-- 엔터치면 인식 되게 하는 것  -->
+    <div class="workouts">
+      <form class="add_form" onsubmit="handleAdd(event)">
+        <input type="text" class="add_input" placeholder="Workout" />
+        <button type="submit" class="add_button">Add</button>
+      </form>
+      <ul class="ul"></ul>
+    </div>
+
+    <script>
+      let items = [
+        { id: 1, name: '벤치프레스', count: 0 },
+        { id: 2, name: '렛풀다운', count: 0 },
+        { id: 3, name: '스쿼트', count: 0 },
+      ];
+
+      const handleIncrement = (id) => {
+        const item = items.find((item) => item.id === id);
+        item.count++;
+        document.querySelector(`.workout-count${id}`).innerHTML = item.count;
+      };
+
+      const handleDecrement = (id) => {
+        const item = items.find((item) => item.id === id);
+        item.count = Math.max(0, item.count - 1);
+        document.querySelector(`.workout-count${id}`).innerHTML = item.count;
+      };
+
+      const handleDelete = (id) => {
+        items = items.filter((item) => item.id !== id);
+        init();
+      };
+
+      const handleAdd = (event) => {
+        event.preventDefault(); // 엔터 쳐도 새로고침 막기
+        const input = document.querySelector('.add_input');
+        const name = input.value.trim();
+        if (name === '') return;
+
+        const newItem = {
+          id: Date.now(),
+          name: name,
+          count: 0,
+        };
+
+        items = [...items, newItem];
+        input.value = '';
+        init();
+      };
+
+      const init = () => {
+        const ul = document.querySelector('.ul');
+        ul.innerHTML = '';
+
+        items.forEach((item) => {
+          const li = document.createElement('li');
+          li.className = 'workout';
+          li.innerHTML = `
+            <span class="workout-name">${item.name}</span>
+            <span class="workout-count workout-count${item.id}">${item.count}</span>
+            <button class="workout-button workout-increase" onclick="handleIncrement(${item.id})">
+              <i class="fas fa-plus-square"></i>
+            </button>
+            <button class="workout-button workout-decrease" onclick="handleDecrement(${item.id})">
+              <i class="fas fa-minus-square"></i>
+            </button>
+            <button class="workout-button workout-delete" onclick="handleDelete(${item.id})">
+              <i class="fas fa-trash"></i>
+            </button>
+          `;
+          ul.appendChild(li);
+        });
+      };
+
+      window.addEventListener('load', init);
+    </script>
+  </body>
+</html>

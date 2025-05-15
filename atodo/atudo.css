@@ -1,0 +1,135 @@
+* {
+  /* 1. padding, margin width나 height포함되도록 */
+  box-sizing: border-box;
+}
+
+ul {
+  /* 2. 기본 패딩과 구슬 없애기 */
+  list-style-type: none;
+  padding-left: 0; /* 필요 시 들여쓰기도 제거 */
+}
+
+body {
+  /* 3. 디스플레이 배경색 지정 */
+  background-color: #ced3df;
+  /* 4. 디스플레이 가운데 정렬 */
+  text-align: center;
+}
+
+button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.list {
+  /* <section> */
+  border-radius: 20px;
+  width: 400px;
+  background-color: #f1f0f7;
+  margin: 30px auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+  padding: 8px;
+  background-color: rgb(2, 0, 36);
+  color: white;
+  border-radius: 20px 20px 0 0;
+  background: #2a7b9b;
+  background: linear-gradient(
+    90deg,
+    rgba(42, 123, 155, 1) 0%,
+    rgba(165, 87, 199, 1) 65%,
+    rgba(237, 221, 83, 1) 100%
+  );
+}
+
+.items {
+  /* ul태그 */
+  height: 450px;
+  overflow-y: auto;
+}
+
+/* 오늘 할일 목록 리스트 시작 되는 부분 */
+.item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 32px;
+}
+
+.item-delete:hover {
+  color: red;
+  transform: scale(1.1);
+}
+
+.item_divider {
+  width: 90%;
+  background-color: lightgray;
+  height: 2px;
+  margin: auto;
+}
+
+.footer {
+  background-color: rgb(2, 0, 36);
+  color: white;
+  border-radius: 0 0 20px 20px;
+  background: #2a7b9b;
+  background: linear-gradient(
+    90deg,
+    rgba(42, 123, 155, 1) 0%,
+    rgba(165, 87, 199, 1) 65%,
+    rgba(237, 221, 83, 1) 100%
+  );
+}
+
+.footer_input {
+  width: 100%;
+  height: 32px;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  padding: 0 16px;
+}
+
+.footer_button {
+  width: 48px;
+  height: 48px;
+  font-size: 28px;
+  border-radius: 50%;
+}
+
+.footer_button:hover {
+  transform: scale(1.1);
+  transition: transform 300ms ease-in;
+}
+
+.load_sample_button {
+  border: none color none;
+  background: none;
+  color: white;
+  padding: 8px 8px;
+  cursor: pointer;
+  transition: transform 300ms ease-in;
+}
+.load_sample_button :hover {
+  transform: scale(1.1);
+  color: aqua;
+}
+
+.reset_button {
+  border: none color none;
+  color: white;
+  background: none;
+  padding: 8px 8px;
+  cursor: pointer;
+  transition: transform 300ms ease-in;
+}
+.reset_button :hover {
+  transform: scale(1.1);
+  color: rgb(38, 245, 11);
+  transform: rotate(180deg);
+}

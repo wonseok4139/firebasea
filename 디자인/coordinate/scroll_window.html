@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* DOM Tree 만들고 CSS DOM Tree 만들고 Render Tree */
+      body {
+        background-color: black;
+      }
+      div {
+        width: 250px;
+        height: 250px;
+        background-color: aqua;
+        margin-bottom: 4px;
+        border-radius: 4px;
+      }
+      .special {
+        width: 250px;
+        height: 250px;
+        background-color: rgb(88, 20, 248);
+      }
+      aside {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+    <div>7</div>
+    <div class="special">8</div>
+    <div>9</div>
+    <div>10</div>
+
+    <aside>
+      <button class="scroll-by">scroll by 100px(y)</button>
+      <button class="scroll-to">scroll to 100px(y)</button>
+      <button class="scroll-into">scroll to special</button>
+    </aside>
+
+    <script>
+      // 이벤트 소스 변수 선언 - 클래스 선택자 사용
+      const special = document.querySelector('.special');
+
+      special.addEventListener('click', (event) => {
+        const rect = special.getClientRects();
+        console.log(rect);
+        console.log(`client: ${event.clientX}, ${event.clientY}`);
+        console.log(`page: ${event.pageX}, ${event.pageY}`);
+      });
+
+      const scrollByBtn = document.querySelector('.scroll-by');
+      const scrollToBtn = document.querySelector('.scroll-to');
+      const scrollIntoBtn = document.querySelector('.scroll-into');
+
+      scrollByBtn.addEventListener('click', () => {
+        window.scrollBy({ top: 100, behavior: 'smooth' });
+      });
+
+      scrollToBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 100, behavior: 'smooth' });
+      });
+
+      scrollIntoBtn.addEventListener('click', () => {
+        special.scrollIntoView({ behavior: 'smooth' });
+      });
+      document.addEventListener('scroll', () => {
+        console.log('window.scrollY');
+      });
+    </script>
+  </body>
+</html>

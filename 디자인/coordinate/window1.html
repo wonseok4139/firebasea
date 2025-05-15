@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* DOM Tree 만들고 CSS DOM Tree 만들고 Render Tree  */
+      body {
+        background-color: black;
+      }
+      div {
+        width: 250px;
+        height: 250px;
+        background-color: aqua;
+        margin-bottom: 4px;
+        border-radius: 4px;
+      }
+      .special {
+        width: 250px;
+        height: 250px;
+        background-color: rgb(88, 20, 248);
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div class="special">안녕하세여</div>
+    <div></div>
+    <div></div>
+    <script>
+      const special = document.querySelector('.special');
+      // JS에서는  어떤 이름에 더블이나 싱글 퀘테이션(" ")이 없으면 변수 취급한다.
+      // undefined를 보게 된다. - 트러블슈팅
+      // 이벤트 소스가 감지되어서 아래 함수가 호출될 때 브라우저가 해당소스에 관련한 이벤트 핸들러에 대응하는 이벤트 객체
+
+      special.addEventListener('click', (event) => {
+        console.log('호출 성공!!!!!!!');
+        console.log(event.target);
+
+        // 좌중괄호와 우중괄호가 있으면 처리부(변수선언, 조건문, 반복문 - 처리)
+        console.log(`client${event.clientX}, ${event.clientY}`);
+        console.log(`page:${event.pageX}, ${event.pageY}`);
+      });
+    </script>
+  </body>
+</html>

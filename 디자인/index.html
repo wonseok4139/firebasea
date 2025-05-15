@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skill Inventory</title>
+    <script
+      src="https://kit.fontawesome.com/b4187af35b.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="stylesheet" href="/디자인/style.css" />
+  </head>
+  <body>
+    <!-- Navbar Start -->
+    <nav id="navbar">
+      <!-- LOGO -->
+      <div class="navbar-logo">
+        <i class="fab fa-diaspora"></i>
+        <a href="#">Skill Inventory</a>
+      </div>
+      <!-- 메뉴 아이템(화면 라우터) -->
+      <div class="div-menu">
+        <ul class="navbar-menu">
+          <li class="navbar-menu-item active" data-link="#home">Home</li>
+          <li class="navbar-menu-item" data-link="#me">나에 대해...</li>
+          <li class="navbar-menu-item" data-link="#skill">보유기술</li>
+          <li class="navbar-menu-item" data-link="#project">참여프로젝트</li>
+          <li class="navbar-menu-item" data-link="#contact">Contact</li>
+        </ul>
+      </div>
+      <!-- 버거 아이콘 -->
+      <div class="burger-toggle-btn">
+        <i class="fas fa-bars"></i>
+      </div>
+      <script>
+        const navbarMenu = document.querySelector('.navbar-menu');
+        const buggerIcon = document.querySelector('.burger-toggle-btn');
+        navbarMenu.addEventListener('click', (event) => {
+          //console.log('click호출');
+          //console.log(event.target);//이벤트가 감지되었을 때 감지되는 이벤트 타겟 객체 출력
+          console.log(event.target.dataset.link); //#home, #me, #skill
+          const target = event.target;
+          const link = target.dataset.link;
+          if (link == null) {
+            return; //함수 밖으로 탈출
+          }
+          scrollIntoView(link);
+        });
+        function scrollIntoView(selector) {
+          const scrollTo = document.querySelector(selector);
+          scrollTo.scrollIntoView({ behavior: 'smooth' });
+        }
+        buggerIcon.addEventListener('click', () => {
+          navbarMenu.classList.toggle('open');
+        });
+      </script>
+    </nav>
+    <!-- Navbar End   -->
+
+    <!-- Home start -->
+    <!-- 메뉴 클릭시 data link값으로 사용 -->
+    <section id="home" class="section">
+      <div class="hcontent">사진</div>
+    </section>
+    <!-- Home End   -->
+    <!-- Me start -->
+    <section id="me" class="section">
+      <div class="mcontent">나에 대해...</div>
+    </section>
+    <!-- Home End   -->
+    <!-- Skill start -->
+    <section id="skill" class="section">
+      <div class="scontent">보유기술은....</div>
+    </section>
+    <!-- Skill End   -->
+    <!-- Project start -->
+    <section id="project" class="section">
+      <div class="pcontent">참여프로젝트</div>
+    </section>
+    <!-- Project End   -->
+    <!-- Contact start -->
+    <section id="contact" class="section">
+      <div class="ccontent">
+        <h2 class="contact-email">이메일 주소</h2>
+        <div class="contact-links">
+          <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="#" target="_blank"><i class="fa fa-linkedin-square"></i></a>
+        </div>
+        <p class="contact-rights">2025 김유신 - All rights reserved</p>
+      </div>
+    </section>
+    <!-- Contact End   -->
+  </body>
+</html>
+<!-- 
+
+-->

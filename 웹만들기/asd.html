@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDo List</title>
+    <script
+      src="https://kit.fontawesome.com/3b3af91d34.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="/웹만들기/asd.css" />
+  </head>
+  <body>
+    <section class="list">
+      <header class="header">ToDo-List</header>
+      <!--============== 목록 시작 ===============-->
+      <ul class="items">
+        <li class="item_row">
+          <!-- flex박스, justify-content: space-between -->
+          <div class="item">
+            <span class="item_name">런닝30분</span>
+            <button class="item-delete">
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
+          <!-- item 아래에 밑줄 그어지도록 추가 -->
+          <div class="item_divider"></div>
+        </li>
+      </ul>
+      <!--=============== 목록 끝 =================-->
+      <footer class="footer">
+        <!-- 일정 입력하는 창 -->
+        <input type="text" class="footer_input" />
+        <!-- 일정 추가 버튼   -->
+        <button class="footer_button">
+          <i class="fas fa-plus"></i>
+        </button>
+      </footer>
+    </section>
+  </body>
+</html>

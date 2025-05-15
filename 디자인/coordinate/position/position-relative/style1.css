@@ -1,0 +1,20 @@
+.warp {
+  width: 300px;
+  border: 10px solid black;
+  margin: 100px;
+}
+.warp .box1 {
+  width: 300px;
+  height: 300px;
+  background-color: aqua;
+  position: relative;
+  margin-top: -50px;
+  left: 50px;
+}
+.warp .box2 {
+  width: 300px;
+  height: 300px;
+  background-color: rgb(204, 38, 196);
+  position: relative;
+  left: 100px;
+}

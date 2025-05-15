@@ -1,0 +1,58 @@
+* {
+  /* 1. padding, margin width나 height포함되도록 */
+  box-sizing: border-box;
+}
+
+ul {
+  /* 2. 기본 패딩과 구슬 없애기 */
+  padding: 0;
+}
+
+body {
+  /* 3. 디스플레이 배경색 지정 */
+  background-color: #faf5e0;
+  /* 4. 디스플레이 가운데 정렬 */
+  text-align: center;
+}
+
+button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.header {
+  height: 48px;
+  padding: 8px;
+  background-color: rgb(2, 0, 36);
+  color: white;
+  border-radius: 20px 20px 0 0;
+}
+
+.items {
+  height: 450px;
+}
+
+.footer {
+  height: 48px;
+  padding: 8px;
+  background-color: rgb(2, 0, 36);
+  color: white;
+  border-radius: 0 0 20px 20px;
+}
+
+.footer_input {
+  width: 100%;
+  height: 32px;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  padding: 0 16px;
+}
+
+.footer_button {
+  width: 48px;
+  height: 48px;
+  font-size: 28px;
+  border-radius: 50%;
+}

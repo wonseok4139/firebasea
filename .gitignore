@@ -1,0 +1,4 @@
+node_modules/
+images/
+#환경 변수 유지
+.env

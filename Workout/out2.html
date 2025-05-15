@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Workout</title>
+
+    <!-- 아이콘(Font Awesome) 불러오기 -->
+    <script
+      src="https://kit.fontawesome.com/3b3af91d34.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- css 연결 -->
+    <link rel="stylesheet" href="/Workout/style.css" />
+  </head>
+  <body>
+    <!-- 운동 항목들을 담을 리스트 -->
+    <ul class="ul"></ul>
+
+    <script>
+      // 운동 목록 데이터 배열
+      const items = [
+        { id: 1, name: '벤치프레스', count: 0 },
+        { id: 2, name: '렛풀다운', count: 0 },
+        { id: 3, name: '스쿼트', count: 0 },
+      ];
+
+      // ▶ 특정 운동의 count 값만 화면에서 업데이트하는 함수
+      const updateCountUI = (id) => {
+        const span = document.querySelector(`.workout-count${id}`);
+        span.innerHTML = items.find((item) => item.id === id).count;
+      };
+
+      // ▶ 카운트를 1 증가시키는 함수
+      const handleIncrement = (id) => {
+        const item = items.find((i) => i.id === id);
+        item.count++; // 데이터 증가
+        updateCountUI(id); // UI 반영
+      };
+
+      // ▶ 카운트를 1 감소시키는 함수 (최소 0까지)
+      const handleDecrement = (id) => {
+        const item = items.find((i) => i.id === id);
+        item.count = Math.max(0, item.count - 1); // 음수 방지
+        updateCountUI(id); // UI 반영
+      };
+
+      // ▶ 운동 항목을 삭제하는 함수
+      const handleDelete = (id) => {
+        const index = items.findIndex((i) => i.id === id); // 해당 항목 위치 찾기
+        if (index !== -1) {
+          items.splice(index, 1); // 배열에서 삭제
+          renderItems(); // 화면 다시 그림
+        }
+      };
+
+      // ▶ 운동 항목 하나의 DOM 요소를 생성하는 함수
+      const createWorkoutItem = (item) => {
+        const li = document.createElement('li');
+        li.className = `workout workout-item${item.id}`;
+
+        // li 안에 운동 이름, 숫자, 버튼들 추가
+        li.innerHTML = `
+          <span class="workout-name">${item.name}</span>
+          <span class="workout-count workout-count${item.id}">${item.count}</span>
+          <button class="workout-button workout-increase"><i class="fas fa-plus-square"></i></button>
+          <button class="workout-button workout-decrease"><i class="fas fa-minus-square"></i></button>
+          <button class="workout-button workout-delete"><i class="fas fa-trash"></i></button>
+        `;
+
+        // 각 버튼에 클릭 이벤트 연결
+        li.querySelector('.workout-increase').addEventListener('click', () =>
+          handleIncrement(item.id)
+        );
+        li.querySelector('.workout-decrease').addEventListener('click', () =>
+          handleDecrement(item.id)
+        );
+        li.querySelector('.workout-delete').addEventListener('click', () =>
+          handleDelete(item.id)
+        );
+
+        return li; // 완성된 li 리턴
+      };
+
+      // ▶ 전체 운동 항목들을 화면에 그리는 함수
+      const renderItems = () => {
+        const ul = document.querySelector('.ul');
+        ul.innerHTML = ''; // 기존 내용 초기화
+
+        // items 배열을 돌면서 li 생성 후 ul에 추가
+        items.forEach((item) => {
+          ul.appendChild(createWorkoutItem(item));
+        });
+      };
+
+      // ▶ 페이지가 로드되면 renderItems 실행
+      window.addEventListener('load', renderItems);
+    </script>
+  </body>
+</html>
